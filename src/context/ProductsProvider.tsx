@@ -1,3 +1,5 @@
+import { createContext, ReactElement, useState } from "react"
+
 export type ProductType = {
   sku: string,
   name: string,
@@ -21,3 +23,23 @@ const initState: ProductType[] = [
     "price": 29.99
   }
 ]
+
+export type UseProductsContextType = { products: ProductType[] }
+
+const initContextState: UseProductsContextType = { products: [] }
+
+const ProdcutsContext = createContext<UseProductsContextType>(initContextState)
+
+type ChildrenType = { children?: ReactElement | ReactElement[] }
+
+export const ProductsProvider = ({ children }: ChildrenType): ReactElement => {
+  const [products, setProducts] = useState<ProductType[]>(initState);
+
+  return (
+    <ProdcutsContext.Provider value={{ products }}>
+      {children};
+    </ProdcutsContext.Provider>
+  )
+}
+
+export default ProdcutsContext
