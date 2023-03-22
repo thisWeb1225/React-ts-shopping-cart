@@ -18,7 +18,7 @@ const REDUCER_ACTION_TYPE = {
   SUBMIT: 'SUBMIT',
 }
 
-export type ReduceActionType = typeof REDUCER_ACTION_TYPE
+export type ReducerActionType = typeof REDUCER_ACTION_TYPE
 
 export type ReducerAction = {
   type: string,
@@ -88,7 +88,7 @@ const useCartContext = (initCartState: CartStateType) => {
     return previousValue + cartItem.qty;
   }, 0)
 
-  const totalPrice = new Intl.NumberFormat('en-US', { style: 'curreucy', currency: 'USD' })
+  const totalPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
     .format(
       state.cart.reduce((previousValue, cartItem) => {
         return previousValue + (cartItem.qty * cartItem.price)
@@ -96,8 +96,8 @@ const useCartContext = (initCartState: CartStateType) => {
     )
 
   const cart = state.cart.sort((a, b) => {
-    const itemA = Number(a.sku.slice(-1))
-    const itemB = Number(b.sku.slice(-1))
+    const itemA = Number(a.sku.slice(-4))
+    const itemB = Number(b.sku.slice(-4))
     return itemA - itemB
   })
 
