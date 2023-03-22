@@ -1,5 +1,5 @@
 type PropsType = {
-  viewCart: ConstrainBooleanParameters,
+  viewCart: boolean,
   setViewCart: React.Dispatch<React.SetStateAction<boolean>>
 }
 
@@ -14,9 +14,7 @@ const Nav = ({ viewCart, setViewCart }: PropsType) => {
     </nav>
   )
 
-  return (
-    <div>Nav</div>
-  )
+  return content
 }
 
 export default Nav

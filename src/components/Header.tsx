@@ -1,28 +1,28 @@
 import Nav from "./Nav"
+import useCart from "../hook/useCart"
 
 type PropsType = {
-  viewCart: ConstrainBooleanParameters,
+  viewCart: boolean,
   setViewCart: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const Header = ({ viewCart, setViewCart }: PropsType) => {
+  const { totalItems, totalPrice } = useCart();
 
   const content = (
     <header className="header">
       <div className="header__title-bar">
         <h1>Watch Shop</h1>
         <div className="header__price-bar">
-          <p>Total Items:</p>
-          <p>Total Price:</p>
+          <p>Total Items: {totalItems}</p>
+          <p>Total Price: {totalPrice}</p>
         </div>
       </div>
       <Nav viewCart={viewCart} setViewCart={setViewCart}></Nav>
     </header>
   )
 
-  return (
-    <div>Header</div>
-  )
+  return content
 }
 
 export default Header
