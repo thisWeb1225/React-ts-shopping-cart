@@ -80,7 +80,7 @@ const reducer = (state: CartStateType, action: ReducerAction): CartStateType => 
 const useCartContext = (initCartState: CartStateType) => {
   const [state, dispatch] = useReducer(reducer, initCartState);
 
-  const REDUCER_ACTION = useMemo(() => {
+  const REDUCER_ACTIONS = useMemo(() => {
     return REDUCER_ACTION_TYPE
   }, [])
 
@@ -101,14 +101,14 @@ const useCartContext = (initCartState: CartStateType) => {
     return itemA - itemB
   })
 
-  return { dispatch, REDUCER_ACTION, totalItems, totalPrice, cart }
+  return { dispatch, REDUCER_ACTIONS, totalItems, totalPrice, cart }
 }
 
 export type UseCartContextType = ReturnType<typeof useCartContext>
 
 const initCartContextState: UseCartContextType = {
   dispatch: () => { },
-  REDUCER_ACTION: REDUCER_ACTION_TYPE,
+  REDUCER_ACTIONS: REDUCER_ACTION_TYPE,
   totalItems: 0,
   totalPrice: '',
   cart: [],
